@@ -83,50 +83,6 @@ class GildedRose(object):
 
 
 
-
-    def update_qulity_ori(self):
-        for item in self.items:
-            if item.quality < 1:
-                item.quality = 0
-
-            if item.quality > self.MAX_QUALITY and item.name != "Sulfuras, Hand of Ragnaros":
-                item.quality = self.MAX_QUALITY
-                if item.sell_in == 0:
-                    continue
-            elif item.name == "Sulfuras, Hand of Ragnaros":
-                item.quality = 80
-                continue
-
-            if item.name == "Backstage passes to a TAFKAL80ETC concert" and item.sell_in < 10:
-                if all(ele > self.MAX_QUALITY for ele in [item.quality + 2, item.quality + 3]):
-                    item.quality = self.MAX_QUALITY
-                    continue
-
-                if item.sell_in <= 5:
-                    item.quality += 3
-                else:
-                    item.quality += 2
-
-                continue
-
-            if item.sell_in < 0:
-                if item.name == "Aged Brie" and item.quality < self.MAX_QUALITY:
-                    item.quality += 1
-                    continue
-
-                item.quality /= 2
-                if item.quality < 1:
-                    item.quality = 0
-
-                continue
-
-            else:# item.sell_in > 0:
-                item.quality += 1
-
-            if item.quality > self.MAX_QUALITY:
-                item.quality = self.MAX_QUALITY
-
-
 class Item:
     def __init__(self, name, sell_in, quality):
         self.name = name
