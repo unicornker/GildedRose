@@ -28,7 +28,6 @@ class updater_glidedRose:
         ]
         updater = GildedRose(self.lst_items)
         # updater.update_quality()
-        # updater.update_qulity_ori()
         updater.update_quality_items()
 
 class MyTestCase(unittest.TestCase,updater_glidedRose):
